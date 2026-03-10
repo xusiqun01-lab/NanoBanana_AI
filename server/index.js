@@ -492,8 +492,8 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-// 前端路由处理
-app.get('*', (req, res) => {
+// 前端路由处理（修复后的写法，避免 path-to-regexp 错误）
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
