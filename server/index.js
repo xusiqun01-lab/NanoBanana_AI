@@ -1,12 +1,17 @@
-const express = require('express');
-const cors = require('cors');
-const multer = require('multer');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import multer from 'multer';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import fs from 'fs';
+import path from 'path';
+import axios from 'axios';
+import { fileURLToPath } from 'url';
+import 'dotenv/config';
+
+// 获取 __dirname（ES Module 需要用这种方式）
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -496,4 +501,4 @@ app.listen(PORT, () => {
   console.log(`服务器运行在端口 ${PORT}`);
 });
 
-module.exports = app;
+export default app;
